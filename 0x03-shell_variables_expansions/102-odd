@@ -1,2 +1,2 @@
 #!/bin/bash
-paste -d'\n' - - < "$@" | cut -f1
+paste - - < "${1:-/dev/stdin}" | cut -f1
