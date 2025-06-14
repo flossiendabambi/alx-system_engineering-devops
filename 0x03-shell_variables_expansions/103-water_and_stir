@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 -c "import os;t=lambda s,b:sum(b.index(c)*len(b)**i for i,c in enumerate(s[::-1]));b='bestchol';print((''.join([b[(t(os.environ['WATER'],'water')+t(os.environ['STIR'],'stir.'))//(len(b)**i)%len(b)for i in range(9)][::-1]]).lstrip(b[0]) or b[0]))"
+python3 -c "WATER_CHARS='water' STIR_CHARS='stir.' BESTCHOL_CHARS='bestchol' print(''.join(BESTCHOL_CHARS[int((int(os.environ['WATER'].translate(str.maketrans(WATER_CHARS,'01234')) if 'water' else '0'),5) + int(os.environ['STIR'].translate(str.maketrans(STIR_CHARS,'012345')) if 'stir.' else '0'),6))//(6**i)%6] for i in range(len('bestchol')))[::-1]).lstrip('b') or BESTCHOL_CHARS[0])"
