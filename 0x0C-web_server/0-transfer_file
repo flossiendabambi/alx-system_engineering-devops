@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script transfers a file to a remote server using SCP with key authentication
+# This script transfers a file to a remote server using SCP with the key authentication
 
 # Exit on any error
 set -e
