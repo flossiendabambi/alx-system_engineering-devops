@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Script to audit A records for specified subdomains of a given domain
+
+domain="$1"
+subdomain="$2"
+
+get_record() {
+    local sub="$1"
+    local dom="$2"
+    local result
+    result=$(dig "${sub}.${dom}" +short | awk 'NR==1')
+    echo "The subdomain ${sub} is a A record and points to ${result}"
+}
+
+if [ -z "$subdomain" ]; then
+    for s in www lb-01 web-01 web-02; do
+        get_record "$s" "$domain"
+    done
+else
+    get_record "$subdomain" "$domain"
+fi
